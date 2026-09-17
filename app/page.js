@@ -13,13 +13,13 @@ export default function Home() {
     <>
       <Whatsapp></Whatsapp>
       <Herosection></Herosection>
-      <Clientele></Clientele>
       <Services></Services>
       <Industry></Industry>
+      <Clientele></Clientele>
 
       <Form2></Form2>
-      <Cta3></Cta3>
       <Testimonials></Testimonials>
+      <Cta3></Cta3>
       <About></About>
       <Cta></Cta>
 

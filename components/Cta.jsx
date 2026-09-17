@@ -29,9 +29,9 @@ const Cta = () => {
           </p>
           <a href="https://toiletcubiclespartition.com/privacy-policy" className="text-white underline">Privacy Policy</a>
 
-          <a href="https://promozionebranding.com/" className="text-white ">
+          <a href="https://inquirybazaar.com/" className="text-white ">
             Developed & Managed by{" "}
-            <span className="underline">Promozione Branding Pvt Ltd.</span>
+            <span className="underline">Inquiry Bazaar Pvt Ltd.</span>
           </a>
         </div>
       </section>

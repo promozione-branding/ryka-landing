@@ -90,15 +90,14 @@ export default function HeroSection() {
     <>
       {/* HEADER */}
       <header
-        className={`fixed top-0 left-0 z-50 w-full flex items-center justify-between px-3 py-2 sm:px-5 sm:py-3 transition-all duration-300 ${
-          scrolled ? "bg-[#FFFAE7] shadow-md" : "bg-transparent"
+        className={`fixed top-0 left-0 z-50 w-full flex items-center justify-between px-3 py-2 sm:px-5 sm:py-3 transition-all duration-300  bg-[#FFFAE7] shadow-md
         }`}
       >
         <Image
           src={
-            scrolled
-              ? "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975029/logo-ryka_irxwux.webp"
-              : "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975030/logo-ryka2_h5hqog.webp"
+            
+              "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975029/logo-ryka_irxwux.webp"
+              // : "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975030/logo-ryka2_h5hqog.webp"
           }
           alt="Ryka Restroom Cubicles"
           width={180}
@@ -119,9 +118,9 @@ export default function HeroSection() {
       </header>
 
       {/* HERO */}
-      <section className="relative h-[450px] w-full overflow-hidden sm:h-[550px] md:h-[785px]">
+      <section className="relative h-[30px] w-full overflow-hidden md:h-[85px]">
         {/* BACKGROUND */}
-        <div className="absolute inset-0 bg-black">
+        {/* <div className="absolute inset-0 bg-black">
           <Image
             key={currentSlide.img}
             src={currentSlide.img}
@@ -133,20 +132,20 @@ export default function HeroSection() {
             sizes="100vw"
             className="hero-image object-cover"
           />
-        </div>
+        </div> */}
 
         {/* OVERLAY */}
-        <div
+        {/* <div
           className="absolute inset-0 z-[1] bg-black/30"
           aria-hidden="true"
-        />
+        /> */}
 
         {/* CONTENT */}
-        <div className="absolute inset-0 z-10 flex items-center">
+        {/* <div className="absolute inset-0 z-10 flex items-center">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-            <div className="flex items-center justify-between gap-8">
+            <div className="flex items-center justify-between gap-8"> */}
               {/* LEFT CONTENT */}
-              <div
+              {/* <div
                 key={index}
                 className="hero-content w-full max-w-lg rounded-2xl bg-black/40 p-5 sm:p-8"
               >
@@ -160,10 +159,10 @@ export default function HeroSection() {
 
                 <p className="mb-6 hidden text-sm leading-relaxed text-white md:block sm:text-lg">
                   {currentSlide.description}
-                </p>
+                </p> */}
 
                 {/* DESKTOP BUTTONS */}
-                <div className="hidden flex-wrap gap-3 md:flex">
+                {/* <div className="hidden flex-wrap gap-3 md:flex">
                   <a
                     href="https://wa.link/nt1jey"
                     target="_blank"
@@ -183,28 +182,28 @@ export default function HeroSection() {
                     <FaPhone aria-hidden="true" />
                     Call Us Today
                   </a>
-                </div>
+                </div> */}
 
                 {/* MOBILE BUTTON */}
-                <button
+                {/* <button
                   type="button"
                   onClick={() => setIsFormOpen(true)}
                   className="rounded-lg bg-[#1279AF] px-6 py-3 font-medium text-white transition-opacity hover:opacity-90 md:hidden"
                 >
                   Contact Now
-                </button>
-              </div>
+                </button> */}
+              {/* </div> */}
 
               {/* FORM */}
-              <div className="hidden w-full max-w-lg md:block">
+              {/* <div className="hidden w-full max-w-lg md:block">
                 <Form />
-              </div>
-            </div>
+              </div> */}
+            {/* </div>
           </div>
-        </div>
+        </div> */}
 
         {/* DOTS */}
-        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+        {/* <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
           {slides.map((slide, i) => (
             <button
               key={`${slide.subtitle}-${i}`}
@@ -220,13 +219,14 @@ export default function HeroSection() {
             />
           ))}
         </div>
-      </section>
+     
+     
 
       {/* POPUP */}
-      <PopupForm
+      {/* <PopupForm
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
-      />
+      /> */}
 
       {/* CSS ANIMATION */}
       <style jsx>{`
@@ -273,6 +273,8 @@ export default function HeroSection() {
           }
         }
       `}</style>
+
+         </section> 
     </>
   );
 }

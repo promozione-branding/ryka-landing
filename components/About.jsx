@@ -74,13 +74,13 @@ const About = () => {
     ].map((item, i) => (
       <div key={i} className="flex flex-col items-center text-center gap-4">
         <Image
-          width={item.w}
-          height={item.h}
+          width={100}
+          height={100}
           alt={item.alt}
           src={item.src}
-          className="mx-auto object-contain"
+          className="mx-auto h-20 w-20 object-contain"
         />
-        <p className="text-xs sm:text-sm md:text-lg font-semibold hover:text-red-500 leading-tight">
+        <p className="text-[13px] sm:text-sm md:text-lg font-semibold hover:text-red-500 leading-tight">
           {item.label}
         </p>
       </div>
