@@ -1,18 +1,22 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import PopupForm from "@/components/Popup";
+
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
+import { FaShoppingCart } from "react-icons/fa";
+import CheckoutPopup from "./CheckoutPopup";
+import Link from "next/link";
 
 const Services = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     AOS.init({
@@ -21,59 +25,90 @@ const Services = () => {
     });
   }, []);
 
+  // Edit product names, images and prices here
   const servicesTop = [
     {
+      id: 3,
+      slug: "kids-restroom-partitions",
       img: "/services/3.webp",
       title: "Kids Restroom Partitions",
       desc: "Our Kids Restroom Partitions are specially designed for children.",
+      price: 17000,
     },
     {
+      id: 4,
+      slug: "urinal-partitions",
       img: "/services/4.webp",
       title: "Urinal Partitions",
       desc: "Ensuring privacy and hygiene in public restrooms.",
+      price: 2850,
     },
     {
+      id: 5,
       img: "/services/5.webp",
+      slug: "premium-finish",
       title: "Premium Finish",
       desc: "Elegant, durable finishes for modern commercial restrooms.",
+      price: 12500 ,
     },
   ];
 
   const servicesBottom = [
     {
+      id: 1,
       img: "/services/1.webp",
       title: "Public Restrooms Partitions",
+      slug: "public-restrooms-partitions",
       desc: "Upgrade your washroom spaces with Ryka Restroom Cubicles.",
+      price: 12000,
     },
     {
+      id: 2,
       img: "/services/2.webp",
+      slug: "luxe-partition-systems",
       title: "Luxe Partition Systems",
-      desc: "Discover perfect blend of luxury & functionality with Luxe Partition.",
+      desc: "Discover the perfect blend of luxury and functionality.",
+      price: 18000,
     },
   ];
 
-  // All services for mobile slider
   const allServices = [...servicesBottom, ...servicesTop];
+
+  const handleBuyNow = (service) => {
+    setSelectedProduct({
+      id: service.id,
+      name: service.title,
+      title: service.title,
+      image: service.img,
+      price: service.price,
+      quantity: 1,
+    });
+  };
+
+  const closeCheckout = () => {
+    setSelectedProduct(null);
+  };
 
   return (
     <>
-      {/* ================= INTRO SECTION ================= */}
+      {/* INTRO SECTION */}
       <section className="bg-[#FFFBEC] px-4">
-        <h2 className="font-extrabold text-center pb-3 md:pb-0 pt-10 md:pt-14 text-2xl md:text-5xl text-gray-900">
+        <h2 className="pt-10 pb-3 text-center text-2xl font-extrabold text-gray-900 md:pt-14 md:pb-0 md:text-5xl">
           Explore Our Most Trusted Cubicle Solutions
         </h2>
 
-        <p className="hidden md:block text-center py-6 text-lg text-gray-700 tracking-wide max-w-3xl mx-auto">
-          Choose from high-quality, water-resistant toilet cubicle partitions
-          designed for commercial spaces like malls, offices, schools, and
-          institutions. Tailored to your space — delivered across India.
+        <p className="mx-auto hidden max-w-3xl py-6 text-center text-lg tracking-wide text-gray-700 md:block">
+          Choose from high-quality, water-resistant toilet cubicle
+          partitions designed for commercial spaces like malls,
+          offices, schools, and institutions. Tailored to your
+          space — delivered across India.
         </p>
       </section>
 
-      {/* ================= SERVICES SECTION ================= */}
+      {/* SERVICES SECTION */}
       <section className="bg-[#FAF7F2] py-8 md:py-14">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* ================= MOBILE SLIDER ================= */}
+        <div className="mx-auto max-w-7xl px-4">
+          {/* MOBILE SLIDER */}
           <div className="block md:hidden">
             <Swiper
               modules={[Pagination, Autoplay]}
@@ -85,40 +120,39 @@ const Services = () => {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              pagination={{
-                clickable: true,
-              }}
+              pagination={{ clickable: true }}
               className="services-swiper !pb-10"
             >
-              {allServices.map((service, idx) => (
-                <SwiperSlide key={idx}>
-                  <Card {...service} onClick={() => setIsFormOpen(true)} />
+              {allServices.map((service) => (
+                <SwiperSlide key={service.id}>
+                  <Card
+                    {...service}
+                    onBuyNow={() => handleBuyNow(service)}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
 
-          {/* ================= DESKTOP LAYOUT ================= */}
+          {/* DESKTOP LAYOUT */}
           <div className="hidden md:block">
-            {/* LARGE CARDS */}
             <div className="grid grid-cols-2 gap-8">
-              {servicesBottom.map((service, idx) => (
+              {servicesBottom.map((service) => (
                 <Card
-                  key={idx}
+                  key={service.id}
                   {...service}
                   large
-                  onClick={() => setIsFormOpen(true)}
+                  onBuyNow={() => handleBuyNow(service)}
                 />
               ))}
             </div>
 
-            {/* TOP CARDS */}
-            <div className="grid grid-cols-3 gap-8 mt-8">
-              {servicesTop.map((service, idx) => (
+            <div className="mt-8 grid grid-cols-3 gap-8">
+              {servicesTop.map((service) => (
                 <Card
-                  key={idx}
+                  key={service.id}
                   {...service}
-                  onClick={() => setIsFormOpen(true)}
+                  onBuyNow={() => handleBuyNow(service)}
                 />
               ))}
             </div>
@@ -126,10 +160,14 @@ const Services = () => {
         </div>
       </section>
 
-      {/* ================= POPUP FORM ================= */}
-      <PopupForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      {/* CHECKOUT POPUP */}
+      <CheckoutPopup
+        isOpen={Boolean(selectedProduct)}
+        onClose={closeCheckout}
+        cartItems={selectedProduct ? [selectedProduct] : []}
+      />
 
-      {/* ================= SWIPER DOTS ================= */}
+      {/* SWIPER DOTS */}
       <style jsx global>{`
         .services-swiper .swiper-pagination {
           bottom: 0 !important;
@@ -151,74 +189,55 @@ const Services = () => {
   );
 };
 
-/* =========================================================
-   CARD COMPONENT
-========================================================= */
-
-function Card({ img, title, desc, large, onClick }) {
+/* SERVICE CARD */
+function Card({slug, img, title, desc, price, large, onBuyNow }) {
   return (
-    <div
-      onClick={onClick}
-      className={`
-        cursor-pointer
-        border-2
-        border-stone-600
-        rounded-2xl
-        shadow-md
-        overflow-hidden
-        transform
-        transition-all
-        duration-300
-        hover:shadow-xl
-        hover:-translate-y-2
-        hover:bg-gradient-to-b
-        hover:from-white
-        hover:to-[#f9fafb]
-        bg-white
-        h-full
-        ${large ? "sm:col-span-1" : ""}
-      `}
+    <Link
+      href={`/${slug}`}
+      className={`h-full overflow-hidden rounded-2xl border-2 border-stone-600 bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:bg-gradient-to-b hover:from-white hover:to-[#f9fafb] hover:shadow-xl ${
+        large ? "sm:col-span-1" : ""
+      }`}
     >
       {/* IMAGE */}
-      <div className="relative w-full h-52 md:h-64 overflow-hidden">
+      <div className="relative h-52 w-full overflow-hidden md:h-64">
         <Image
           src={img}
           alt={title}
           fill
-          className="object-cover hover:scale-105 transition-transform duration-300"
+          className="object-cover transition-transform duration-300 hover:scale-105"
           sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 
       {/* CONTENT */}
       <div className="p-4 text-center">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+        <h3 className="mb-2 text-xl font-semibold text-gray-900">
+          {title}
+        </h3>
 
-        <p className="text-gray-600 text-base mb-4">{desc}</p>
+        <p className="mb-3 text-base text-gray-600">{desc}</p>
 
-        {/* ENQUIRY BUTTON */}
-        <a
-          href="tel:+919667233007"
-          onClick={(e) => {
-            // Prevent card click from opening popup
-            e.stopPropagation();
-          }}
-          className="
-            inline-block
-            bg-[#1279AF]
-            text-white
-            px-6
-            py-2
-            rounded-lg
-            font-medium
-            hover:opacity-90
-            transition
-          "
-        >
-          Enquiry Now
-        </a>
+        {/* PRODUCT PRICE */}
+        <p className="mb-4 text-lg font-bold text-[#10285f]">
+          ₹{Number(price).toLocaleString("en-IN")}
+        </p>
+
+        {/* BUY NOW */}
+        
+<button
+  type="button"
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onBuyNow();
+  }}
+  className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#1279AF] px-6 py-3 font-medium text-white transition hover:bg-[#10285f]"
+>
+  Buy Now <FaShoppingCart />
+</button>
+
       </div>
-    </div>
+    </Link>
   );
 }
 
