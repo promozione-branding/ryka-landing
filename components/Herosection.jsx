@@ -95,9 +95,9 @@ export default function HeroSection() {
       >
         <Image
           src={
-            
-              "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975029/logo-ryka_irxwux.webp"
-              // : "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975030/logo-ryka2_h5hqog.webp"
+
+            "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975029/logo-ryka_irxwux.webp"
+            // : "https://res.cloudinary.com/dzbkxqqo9/image/upload/v1761975030/logo-ryka2_h5hqog.webp"
           }
           alt="Ryka Restroom Cubicles"
           width={180}
@@ -144,8 +144,8 @@ export default function HeroSection() {
         {/* <div className="absolute inset-0 z-10 flex items-center">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="flex items-center justify-between gap-8"> */}
-              {/* LEFT CONTENT */}
-              {/* <div
+        {/* LEFT CONTENT */}
+        {/* <div
                 key={index}
                 className="hero-content w-full max-w-lg rounded-2xl bg-black/40 p-5 sm:p-8"
               >
@@ -161,8 +161,8 @@ export default function HeroSection() {
                   {currentSlide.description}
                 </p> */}
 
-                {/* DESKTOP BUTTONS */}
-                {/* <div className="hidden flex-wrap gap-3 md:flex">
+        {/* DESKTOP BUTTONS */}
+        {/* <div className="hidden flex-wrap gap-3 md:flex">
                   <a
                     href="https://wa.link/nt1jey"
                     target="_blank"
@@ -184,21 +184,21 @@ export default function HeroSection() {
                   </a>
                 </div> */}
 
-                {/* MOBILE BUTTON */}
-                {/* <button
+        {/* MOBILE BUTTON */}
+        {/* <button
                   type="button"
                   onClick={() => setIsFormOpen(true)}
                   className="rounded-lg bg-[#1279AF] px-6 py-3 font-medium text-white transition-opacity hover:opacity-90 md:hidden"
                 >
                   Contact Now
                 </button> */}
-              {/* </div> */}
+        {/* </div> */}
 
-              {/* FORM */}
-              {/* <div className="hidden w-full max-w-lg md:block">
+        {/* FORM */}
+        {/* <div className="hidden w-full max-w-lg md:block">
                 <Form />
               </div> */}
-            {/* </div>
+        {/* </div>
           </div>
         </div> */}
 
@@ -223,13 +223,13 @@ export default function HeroSection() {
      
 
       {/* POPUP */}
-      {/* <PopupForm
+        {/* <PopupForm
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
       /> */}
 
-      {/* CSS ANIMATION */}
-      <style jsx>{`
+        {/* CSS ANIMATION */}
+        <style jsx>{`
         .hero-image {
           animation: heroZoom 5s ease-out forwards;
         }
@@ -274,7 +274,7 @@ export default function HeroSection() {
         }
       `}</style>
 
-         </section> 
+      </section>
     </>
   );
 }
