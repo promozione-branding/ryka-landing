@@ -25,6 +25,8 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-TK3L7KJ8');
           `}
         </Script>
+        <meta name="google-site-verification" content="jD30DDcOTu1OrcQ4pVZgacnWFafhpLnDUhnHEVLcAqE" />
+
       </head>
       <body className={`${raleway.variable} antialiased`}>
         {/* ✅ Google Tag Manager (script, placed at top of body) */}
